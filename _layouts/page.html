@@ -30,13 +30,13 @@ layout: base
 {%- include snippets/assign.html -%}
 {%- assign _show_title = __return -%}
 
-{%- assign __source = page.show_edit_on_github -%}
-{%- assign __target = layout.show_edit_on_github -%}
+
+
 {%- include snippets/assign.html -%}
 {%- assign __source = __return -%}
-{%- assign __target = site.data.variables.default.page.show_edit_on_github -%}
+
 {%- include snippets/assign.html -%}
-{%- assign _show_edit_on_github = __return -%}
+
 
 {%- if page.sidebar -%}
 <div class="layout--page layout--page--sidebar clearfix js-page-root">
@@ -89,26 +89,11 @@ layout: base
             {%- else -%}
               <article>
             {%- endif -%}
-              {%- if _show_title or _show_edit_on_github -%}
-                <div class="article__header">
-              {%- endif -%}
                   {%- if _show_title -%}
                     <header><h1 itemprop="headline">{{ _page_title }}</h1></header>
                   {%- else -%}
                     <header style="display: none;"><h1 itemprop="headline">{{ _page_title }}</h1></header>
                   {%- endif-%}
-                  {%- if _show_edit_on_github -%}
-                    {%- if site.repository and site.repository_tree -%}
-                      {%- assign __locale = site.data.locale.POST_ON_GITHUB -%}
-                      {%- include snippets/locale-to-string.html -%}
-                      <a class="edit-on-github-button button button--secondary button--rounded button--sm"
-                        href="https://github.com/{{ site.repository }}/tree/{{ site.repository_tree }}/{{ page.path }}">
-                        <i class="fab fa-github"></i> {{ __return }}</a>
-                    {%- endif -%}
-                  {%- endif -%}
-              {%- if _show_title or _show_edit_on_github -%}
-                </div>
-              {%- endif -%}
 
               {%- include article-info.html -%}
 
